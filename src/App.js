@@ -42,17 +42,13 @@ function ChatRoom() {
     e.preventDefault();
 
     const { uid, photoURL } = auth.currentUser;
-
-    try {
+    
     await messagesRef.add({
       text: formValue,
       createdAt: firebase.firestore.FieldValue.serverTimestamp(),
       uid,
       photoURL
     })
-  } catch(err) {
-    console.log(err)
-  }
 
     setFormValue('');
 
