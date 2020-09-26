@@ -73,8 +73,12 @@ function ChatRoom() {
 
 function SignIn() {
   const signInWithGoogle = () => {
-    const provider = new firebase.auth.GoogleAuthProvider();
-    auth.signInWithPopup(provider);
+    try {
+      const provider = new firebase.auth.GoogleAuthProvider();
+      auth.signInWithPopup(provider);
+    } catch(err) {
+      console.log(err);
+    }
   }
 
   return (
