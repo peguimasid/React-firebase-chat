@@ -32,7 +32,7 @@ function ChatRoom() {
   const dummy = useRef();
 
   const messagesRef = firestore.collection('messages');
-  const query = messagesRef.orderBy('createdAt').limit(25);
+  const query = messagesRef.orderBy('createdAt');
 
   const [messages] = useCollectionData(query, {idField: 'id'});
 
@@ -43,12 +43,16 @@ function ChatRoom() {
 
     const { uid, photoURL } = auth.currentUser;
 
+    try {
     await messagesRef.add({
       text: formValue,
       createdAt: firebase.firestore.FieldValue.serverTimestamp(),
       uid,
       photoURL
     })
+  } catch(err) {
+    console.log(err)
+  }
 
     setFormValue('');
 
@@ -73,12 +77,8 @@ function ChatRoom() {
 
 function SignIn() {
   const signInWithGoogle = () => {
-    try {
       const provider = new firebase.auth.GoogleAuthProvider();
       auth.signInWithPopup(provider);
-    } catch(err) {
-      console.log(err);
-    }
   }
 
   return (
