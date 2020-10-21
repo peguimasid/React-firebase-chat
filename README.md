@@ -7,7 +7,7 @@
 
 > Made a real time chat using ReactJS and Firebase
 
-### 🏠 [Clique aqui] para acessar o projeto em produção(https://react-firebase-chat.netlify.app/)
+### 🏠 [Clique aqui para acessar o projeto em produção](https://react-firebase-chat.netlify.app/)
 
 ## Install
 
